@@ -23,17 +23,19 @@ const Footer = () => {
       >
         Made with <span role="img" aria-label="heart">❤️</span>
       </Text>
-      <Text
-        sx={{
-          letterSpacing: '2px',
-          fontSize: '14px',
-          color: '#FF4136',
-          fontFamily: 'inter',
-          textAlign: 'center',
-        }}
-      >
-        #STAYTHEFUCKHOME
-      </Text>
+      <a href="https://www.helpfulengineering.org" target="_blank" rel="noopener noreferrer">
+        <Text
+          sx={{
+            letterSpacing: '2px',
+            fontSize: '14px',
+            color: 'white',
+            fontFamily: 'inter',
+            textAlign: 'center',
+          }}
+        >
+          Get involved
+        </Text>
+      </a>
       <a href="https://twitter.com/_luisFilipePT">
         <Text
           sx={{
