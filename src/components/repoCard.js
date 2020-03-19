@@ -1,6 +1,10 @@
 import React from 'react'
 import { Card, Grid, Text, Box } from 'theme-ui'
 
+const openGithubPage = (githubLink) => {
+  window.open(githubLink, '_blank');
+};
+
 const RepoCard = ({ repo }) => {
   return (
     <Card
@@ -12,7 +16,11 @@ const RepoCard = ({ repo }) => {
         padding: '15px 15px 25px 20px',
         margin: 15,
         boxShadow: '0 1px 1rem rgba(10, 10, 25, 0.3)',
+        ':hover': {
+          cursor: 'pointer'
+        }
       }}
+      onClick={() => openGithubPage(repo.html_url)}
     >
       <Box
         sx={{
