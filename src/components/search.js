@@ -1,6 +1,8 @@
 import React from 'react'
 import { Box, Input, Grid, Select, Label } from 'theme-ui'
 
+import { githubLanguages } from '../data/githubLanguages'
+
 const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
   return (
     <>
@@ -66,8 +68,7 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
         >
           <Select defaultValue="" onChange={e => onFilterChange(e)}>
             <option value="">All Languages</option>
-            <option value="Vue">Vue</option>
-            <option value="javascript">Javascript</option>
+            {githubLanguages.map(lang => <option value={lang}>{lang}</option>)}
           </Select>
         </Box>
       </Grid>
