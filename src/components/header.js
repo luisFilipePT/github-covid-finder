@@ -27,18 +27,37 @@ const Header = () => {
           <span style={{ color: '#FF4136' }}>Commit</span>ted to fight Corona
         </Link>
       </Text>
-      <Link to="/about">
+      <Flex
+        sx={{
+          justifyContent: 'space-between',
+          width: '130px',
+        }}
+      >
+        <Link to="/about">
+          <Text
+            sx={{
+              fontSize: '16px',
+              color: 'white',
+              fontFamily: 'inter',
+              textAlign: 'center',
+            }}
+          >
+            About
+          </Text>
+        </Link>
+        <a href="https://github.com/luisFilipePT/github-covid-finder" target="_blank" rel="noopener noreferrer">
         <Text
-          sx={{
-            fontSize: '16px',
-            color: 'white',
-            fontFamily: 'inter',
-            textAlign: 'center',
-          }}
-        >
-          About
-        </Text>
-      </Link>
+            sx={{
+              fontSize: '16px',
+              color: 'white',
+              fontFamily: 'inter',
+              textAlign: 'center',
+            }}
+          >
+            Github
+          </Text>
+        </a>
+      </Flex>
     </Flex>
   )
 }
