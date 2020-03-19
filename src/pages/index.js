@@ -71,11 +71,10 @@ const Index = () => {
       }
     }
     // Avoid request while developing
-    process.env.NODE_ENV !== 'development' ? setRepos(mockRepos) : fetchData()
+    process.env.NODE_ENV === 'development' ? setRepos(mockRepos) : fetchData()
   }, [searchState])
 
   const onSearchChange = field => e => {
-    console.log('helllo')
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
       dispatch({ type: field, payload: searchState.page + 1 })
       refSearch.current.scrollIntoView()
