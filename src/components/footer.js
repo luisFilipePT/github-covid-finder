@@ -23,12 +23,12 @@ const Footer = () => {
       >
         Made with <span role="img" aria-label="heart">❤️</span>
       </Text>
-      <a href="https://github.com/luisFilipePT/github-covid-finder" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.helpfulengineering.org" target="_blank" rel="noopener noreferrer">
         <Text
           sx={{
             letterSpacing: '2px',
             fontSize: '14px',
-            color: '#FF4136',
+            color: 'white',
             fontFamily: 'inter',
             textAlign: 'center',
           }}
