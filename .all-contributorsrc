@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jonnyparris",
+      "name": "Ruskin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6400000?v=4",
+      "profile": "http://ruskinconstant.com",
+      "contributions": [
+        "code",
+        "doc",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "github-covid-finder",
+  "projectOwner": "luisFilipePT",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
