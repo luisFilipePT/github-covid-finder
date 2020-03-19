@@ -68,7 +68,7 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
         >
           <Select defaultValue="" onChange={e => onFilterChange(e)}>
             <option value="">All Languages</option>
-            {githubLanguages.map(lang => <option value={lang}>{lang}</option>)}
+            {githubLanguages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
           </Select>
         </Box>
       </Grid>
