@@ -1,4 +1,4 @@
-# Contributing to xgeeks - JS Intl Kitchen Sink
+# Contributing to GitHub Covid Finder
 
 🎉🚀🙌🏻 First off, thanks for taking the time to contribute! 🙌🏻🚀🎉
 
