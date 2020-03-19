@@ -45,6 +45,7 @@ Thank's goes to these wonderful people ([emoji key](https://allcontributors.org/
 <table>
   <tr>
     <td align="center"><a href="http://ruskinconstant.com"><img src="https://avatars2.githubusercontent.com/u/6400000?v=4" width="100px;" alt=""/><br /><sub><b>Ruskin</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=jonnyparris" title="Code">💻</a> <a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=jonnyparris" title="Documentation">📖</a> <a href="#projectManagement-jonnyparris" title="Project Management">📆</a></td>
+    <td align="center"><a href="http://alexandrempsantos.com"><img src="https://avatars0.githubusercontent.com/u/2593480?v=4" width="100px;" alt=""/><br /><sub><b>Alexandre Santos</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=asantos00" title="Code">💻</a></td>
   </tr>
 </table>
 
