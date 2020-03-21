@@ -21,9 +21,13 @@ const Footer = () => {
           textAlign: 'center',
         }}
       >
-        Made with <span role="img" aria-label="heart">❤️</span>
+        <a href="https://www.netlify.com">This site is powered by Netlify</a>
       </Text>
-      <a href="https://www.helpfulengineering.org" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://www.helpfulengineering.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Text
           sx={{
             letterSpacing: '2px',
@@ -36,18 +40,19 @@ const Footer = () => {
           Get involved
         </Text>
       </a>
-      <a href="https://twitter.com/_luisFilipePT">
-        <Text
-          sx={{
-            fontSize: '12px',
-            color: 'white',
-            fontFamily: 'inter',
-            textAlign: 'center',
-          }}
-        >
-          @_luisFilipePT
-        </Text>
-      </a>
+      <Text
+        sx={{
+          fontSize: '12px',
+          color: 'white',
+          fontFamily: 'inter',
+          textAlign: 'center',
+        }}
+      >
+        <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>&nbsp;|&nbsp;
+        <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
+          Code of Conduct
+        </a>
+      </Text>
     </Flex>
   )
 }
