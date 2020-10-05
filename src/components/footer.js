@@ -1,59 +1,66 @@
 import React from 'react'
-import { Flex, Text } from 'theme-ui'
+import { Box, Flex, Text } from 'theme-ui'
 
 const Footer = () => {
   return (
-    <Flex
-      as="footer"
+    <Box
       sx={{
-        bg: 'rgba(0, 0, 0, 0.2)',
-        height: '40px',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        px: '40px',
-      }}
-    >
-      <Text
+        bg: 'rgba(0, 0, 0, 0.4)',
+        py: '5px'
+      }}>
+      <Flex
+        as="footer"
         sx={{
-          fontSize: '12px',
-          color: 'white',
-          fontFamily: 'inter',
-          textAlign: 'center',
+          flexDirection: ['column', 'row'],
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          maxWidth: ['100%', '768px', '992px', '1400px'],
+          px: '15px',
+          margin: '0 auto'
         }}
-      >
-        <a href="https://www.netlify.com">This site is powered by Netlify</a>
-      </Text>
-      <a
-        href="https://www.helpfulengineering.org"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         <Text
           sx={{
-            letterSpacing: '2px',
-            fontSize: '14px',
+            fontSize: '12px',
             color: 'white',
             fontFamily: 'inter',
             textAlign: 'center',
           }}
         >
-          Get involved
+          <a href="https://www.netlify.com">This site is powered by Netlify</a>
         </Text>
-      </a>
-      <Text
-        sx={{
-          fontSize: '12px',
-          color: 'white',
-          fontFamily: 'inter',
-          textAlign: 'center',
-        }}
-      >
-        <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>&nbsp;|&nbsp;
-        <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
-          Code of Conduct
+        <a
+          href="https://www.helpfulengineering.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Text
+            sx={{
+              letterSpacing: '2px',
+              fontSize: '14px',
+              color: 'white',
+              fontFamily: 'inter',
+              textAlign: 'center',
+            }}
+          >
+            Get involved
+        </Text>
         </a>
-      </Text>
-    </Flex>
+        <Text
+          sx={{
+            fontSize: '12px',
+            color: 'white',
+            fontFamily: 'inter',
+            textAlign: 'center',
+          }}
+        >
+          <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>&nbsp;|&nbsp;
+        <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
+            Code of Conduct
+        </a>
+        </Text>
+      </Flex>
+    </Box>
   )
 }
 
