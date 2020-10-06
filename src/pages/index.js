@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
 import { Helmet } from 'react-helmet'
 import { Grid } from 'theme-ui'
+
 import Layout from '../components/layout'
 import RepoCard from '../components/repoCard'
 import Search from '../components/search'
@@ -42,7 +43,12 @@ const buildSearchQuery = searchState => {
   }
 
   if (searchState.filter !== '') {
-    query += `+language:${searchState.filter}`
+    const languageFilter =
+      searchState.filter === 'C / C++'
+        ? searchState.filter.replace('C / C++', 'C%2FC++')
+        : searchState.filter
+
+    query += `+language:${languageFilter}`
   }
 
   if (searchState.sort !== '') {
@@ -52,6 +58,20 @@ const buildSearchQuery = searchState => {
   return `${query}&per_page=30&page=${searchState.page}`
 }
 
+async function fetchData(query) {
+  try {
+    const response = await fetch(`${URL}${buildSearchQuery(query)}`)
+
+    const data = await response.json()
+
+    return data
+  } catch (e) {
+    console.log('error', e)
+  }
+
+  return null
+}
+
 const Index = () => {
   const refSearch = useRef(null);
   const [repos, setRepos] = useState(null)
@@ -59,19 +79,16 @@ const Index = () => {
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${URL}${buildSearchQuery(searchState)}`)
-        let data = await response.json()
+    const fetchDataAndSetState = async () => {
+      const data = fetchData(searchState)
 
+      if (data) {
         setRepos(data)
         setTotalResults(data.total_count)
-      } catch (e) {
-        console.log('error', e)
       }
     }
     // Avoid request while developing
-    process.env.NODE_ENV === 'development' ? setRepos(mockRepos) : fetchData()
+    process.env.NODE_ENV === 'development' ? setRepos(mockRepos) : fetchDataAndSetState()
   }, [searchState])
 
   const onSearchChange = field => e => {
@@ -102,6 +119,10 @@ const Index = () => {
       </Helmet>
       <span ref={refSearch}/>
       <Search
+        setRepos={setRepos}
+        setTotalResults={setTotalResults}
+        fetchData={fetchData}
+        searchState={searchState}
         onSearchChange={onSearchChange('search')}
         onSortChange={onSearchChange('sort')}
         onFilterChange={onSearchChange('filter')}

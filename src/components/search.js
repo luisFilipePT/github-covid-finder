@@ -4,7 +4,15 @@ import SearchIcon from "../images/icons/search.inline.svg"
 
 import { githubLanguages } from '../data/githubLanguages'
 
-const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
+const Search = ({
+  onSearchChange,
+  onSortChange,
+  onFilterChange,
+  searchState,
+  fetchData,
+  setRepos,
+  setTotalResults
+}) => {
   return (
     <Grid
       sx={{
@@ -36,13 +44,24 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
           placeholder="Search Covid-19 related repos"
         />
 
-        <SearchIcon style={{
-          width: 22,
-          height: 22,
-          position: 'absolute',
-          top: 10,
-          right: 10,
-        }} />
+        <SearchIcon
+          style={{
+            top: 10,
+            right: 10,
+            width: 22,
+            height: 22,
+            cursor: 'pointer',
+            position: 'absolute',
+          }}
+          onClick={async () => {
+            const data = await fetchData(searchState)
+
+            if (data) {
+              setRepos(data)
+              setTotalResults(data.total_count)
+            }
+          }}
+        />
 
         <Label
           sx={{
@@ -52,8 +71,8 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
             opacity: '0.8'
           }}
         >
-          Press Enter when you are done (GitHub API has a rate limit of<b>&nbsp; 10
-          requests per minute </b> &nbsp;if something not working please wait...)
+          Press Enter when you are done (GitHub API has a rate limit of<a style={{ cursor: 'pointer' }} href="https://developer.github.com/v3/search/#rate-limit" target="_blank" rel="noopener noreferrer"><b>&nbsp; 10
+          requests per minute </b> &nbsp;</a>if something not working please wait...)
         </Label>
 
       </Box>
