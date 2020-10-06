@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Input, Grid, Select, Label } from 'theme-ui'
+import SearchIcon from "../images/icons/search.inline.svg"
 
 import { githubLanguages } from '../data/githubLanguages'
 
@@ -35,20 +36,20 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
           placeholder="Search Covid-19 related repos"
         />
 
-        <svg style={{
+        <SearchIcon style={{
           width: 22,
           height: 22,
           position: 'absolute',
           top: 10,
           right: 10,
-        }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        }} />
 
         <Label
           sx={{
             fontSize: 12,
             display: 'block',
             mt: '10px',
-            opacity:'0.8'
+            opacity: '0.8'
           }}
         >
           Press Enter when you are done (GitHub API has a rate limit of<b>&nbsp; 10
@@ -66,8 +67,8 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
         }}
       >
         <Box>
-          <Select 
-           sx={{
+          <Select
+            sx={{
               backgroundColor: 'rgba(0,0,0,0.5)',
               border: '1px solid transparent',
               borderRadius: 8,
@@ -86,8 +87,8 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
           </Select>
         </Box>
         <Box>
-          <Select  
-           sx={{
+          <Select
+            sx={{
               backgroundColor: 'rgba(0,0,0,0.5)',
               border: '1px solid transparent',
               borderRadius: 8,
