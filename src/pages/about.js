@@ -16,15 +16,18 @@ const About = () => {
       <Container
         sx={{
           padding: 4,
-          color: 'white',
+          color: 'text',
           fontFamily: 'inter',
           fontSize: 24,
           textAlign: 'center',
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          borderRadius: '3px',
+          backgroundColor: 'cardBackground',
+          borderRadius: '8px',
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: 'cardBorder',
         }}
       >
-        <Box p={4} color="background" bg="text">
+        <Box p={4}>
           <h3>
             "Opportunity 3 - Start <em>contributing</em> immediately
           </h3>

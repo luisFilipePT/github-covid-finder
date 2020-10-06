@@ -13,13 +13,13 @@ const RepoCard = ({ repo }) => {
   return (
     <Card
       sx={{
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        color: '#d2d2d2',
+        backgroundColor: 'cardBackground',
         fontFamily: 'inter',
-        borderRadius: 3,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: 'cardBorder',
         padding: '15px 15px 25px 20px',
-        //margin: 15,
-        boxShadow: '0 1px 1rem rgba(10, 10, 25, 0.3)',
         ':hover': {
           cursor: 'pointer'
         }

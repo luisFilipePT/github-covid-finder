@@ -15,7 +15,7 @@ const PageLayout = ({ data, children }) => {
         flexDirection: 'column',
         height: '100vh',
         overflow: 'hidden',
-        backgroundColor: `#303030`
+        backgroundColor: 'background'
       }}
     >
       <Header
