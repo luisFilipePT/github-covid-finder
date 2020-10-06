@@ -5,7 +5,9 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        bg: 'rgba(0, 0, 0, 0.4)',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: 'cardBorder',
         py: '5px'
       }}>
       <Flex
@@ -15,14 +17,14 @@ const Footer = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           maxWidth: ['100%', '768px', '992px', '1400px'],
-          px: '15px',
+          py: '15px',
           margin: '0 auto'
         }}
       >
         <Text
           sx={{
             fontSize: '12px',
-            color: 'white',
+            color: 'text',
             fontFamily: 'inter',
             textAlign: 'center',
           }}
@@ -38,7 +40,7 @@ const Footer = () => {
             sx={{
               letterSpacing: '2px',
               fontSize: '14px',
-              color: 'white',
+              color: 'text',
               fontFamily: 'inter',
               textAlign: 'center',
             }}
@@ -49,15 +51,15 @@ const Footer = () => {
         <Text
           sx={{
             fontSize: '12px',
-            color: 'white',
+            color: 'text',
             fontFamily: 'inter',
             textAlign: 'center',
           }}
         >
           <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>&nbsp;|&nbsp;
-        <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
-            Code of Conduct
-        </a>
+          <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
+              Code of Conduct
+          </a>
         </Text>
       </Flex>
     </Box>

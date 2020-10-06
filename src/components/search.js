@@ -14,7 +14,7 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
       <Box
         sx={{
           width: '100%',
-          color: 'white',
+          color: 'text',
           fontFamily: 'inter',
           mb: '10px',
           position: 'relative',
@@ -22,8 +22,11 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
       >
         <Input
           sx={{
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            border: '1px solid transparent',
+            backgroundColor: 'cardBackground',
+            color: 'text',
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderColor: 'cardBorder',
             borderRadius: 8,
             height: 45,
             fontSize: 16,
@@ -69,11 +72,17 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
         <Box>
           <Select
             sx={{
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              border: '1px solid transparent',
+              backgroundColor: 'cardBackground',
+              color: 'text',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
               fontSize: 16,
+              '& + svg': {
+                fill: 'text',
+              },
               '&:focus': {
                 outline: 0
               },
@@ -89,11 +98,17 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
         <Box>
           <Select
             sx={{
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              border: '1px solid transparent',
+              backgroundColor: 'cardBackground',
+              color: 'text',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
               fontSize: 16,
+              '& + svg': {
+                fill: 'text',
+              },
               '&:focus': {
                 outline: 0
               },
