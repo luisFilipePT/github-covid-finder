@@ -11,7 +11,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/def4d17b-fce3-422b-9d55-769dca8fe027/deploy-status)](https://github-covid-finder.netlify.com/)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## What’s In This Document
@@ -49,6 +49,7 @@ Thank's goes to these wonderful people ([emoji key](https://allcontributors.org/
     <td align="center"><a href="http://ruskinconstant.com"><img src="https://avatars2.githubusercontent.com/u/6400000?v=4" width="100px;" alt=""/><br /><sub><b>Ruskin</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=jonnyparris" title="Code">💻</a> <a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=jonnyparris" title="Documentation">📖</a> <a href="#projectManagement-jonnyparris" title="Project Management">📆</a></td>
     <td align="center"><a href="http://alexandrempsantos.com"><img src="https://avatars0.githubusercontent.com/u/2593480?v=4" width="100px;" alt=""/><br /><sub><b>Alexandre Santos</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=asantos00" title="Code">💻</a></td>
     <td align="center"><a href="https://micaelr95.github.io/"><img src="https://avatars3.githubusercontent.com/u/12500655?v=4" width="100px;" alt=""/><br /><sub><b>Micael Rodrigues</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=micaelr95" title="Code">💻</a></td>
+    <td align="center"><a href="https://hansfelix.github.io/"><img src="https://avatars0.githubusercontent.com/u/26641116?v=4" width="100px;" alt=""/><br /><sub><b>Hans Felix Ramos</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=hansfelix" title="Code">💻</a> <a href="#design-hansfelix" title="Design">🎨</a></td>
   </tr>
 </table>
 
