@@ -106,7 +106,7 @@ const Index = () => {
         onSortChange={onSearchChange('sort')}
         onFilterChange={onSearchChange('filter')}
       />
-      <Grid columns={[1, 1, 1, 2]}>
+      <Grid columns={[1, 1, 1, 3]}>
         {repos.items.map(repo => (
           <RepoCard key={repo.id} repo={repo} />
         ))}

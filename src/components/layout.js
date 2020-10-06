@@ -1,37 +1,47 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
-import { Flex } from 'theme-ui'
+import { Box, Flex } from 'theme-ui'
 import Header from './header'
 import Footer from './footer'
 
 import './layout.css'
 
 const PageLayout = ({ data, children }) => {
-  const imageData = data.desktop.childImageSharp.fluid
   const siteData = data.siteData
 
   return (
-    <BackgroundImage
-      style={{ height: '100vh' }}
-      fluid={imageData}
-      backgroundColor={`#040e18`}
+    <Flex
+      sx={{
+        flexDirection: 'column',
+        height: '100vh',
+        overflow: 'hidden',
+        backgroundColor: `#303030`
+      }}
     >
-      <Header title={siteData.siteMetadata.description} />
+      <Header
+        sx={{
+        }}
+        title={siteData.siteMetadata.description} />
       <Flex
         as="main"
         sx={{
+          flex: 1,
           overflowY: 'scroll',
-          height: 'calc(100vh - 120px)',
           flexDirection: 'column',
           alignItems: 'center',
-          p: '25px',
+          p: ['20px 0'],
         }}
       >
-        {children}
+        <Box
+          sx={{
+            maxWidth: ['100%', '768px', '992px', '1400px'],
+            px: '15px'
+          }}>
+          {children}
+        </Box>
       </Flex>
       <Footer />
-    </BackgroundImage>
+    </Flex >
   )
 }
 
