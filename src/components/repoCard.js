@@ -35,10 +35,10 @@ const RepoCard = ({ repo }) => {
         <Text sx={{ fontSize: 22, py: '8px', fontWeight: 'bold' }}>
           {repo.name}
         </Text>
-        <Text sx={{ fontSize: 18, py: '8px', color: '#9d6a1e' }}>
+        <Text sx={{ fontSize: 18, py: '8px', color: '#9d1e1e' }}>
           {repo.full_name}
         </Text>
-        <Text sx={{ pt: '4px', color: '#80795f' }}>{repo.description}</Text>
+        <Text sx={{ pt: '4px', color: '#805f5f' }}>{repo.description}</Text>
       </Box>
       <Grid
         columns={4}
