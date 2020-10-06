@@ -10,7 +10,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "covid",
@@ -36,6 +36,12 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "@babel/compat-data": "^7.9.0",
+    "babel-jest": "^26.5.0",
+    "babel-preset-gatsby": "^0.5.13",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.5.0",
+    "prettier": "1.19.1",
+    "react-test-renderer": "^16.13.1"
   }
 }
