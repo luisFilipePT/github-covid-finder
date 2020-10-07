@@ -1,18 +1,12 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { Container, Text, Box, Link } from 'theme-ui'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/SEO'
 
 const About = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Commit | STAY HOME</title>
-        <meta
-          name="description"
-          content="Finder for repos on GitHub related to Corona"
-        />
-      </Helmet>
+      <SEO />
       <Container
         sx={{
           padding: 4,
@@ -33,10 +27,10 @@ const About = () => {
           </h3>
           <Text>
             It would be great if any software engineer with spare time can just
-            peruse open Github issues across all OpenAir [Covid-19] projects, filter for
-            their area of expertise and just submit little PRs within their
-            specific time constraints. You shouldn’t even need to engage too
-            deeply with the wider project organisation; just see a list of
+            peruse open Github issues across all OpenAir [Covid-19] projects,
+            filter for their area of expertise and just submit little PRs within
+            their specific time constraints. You shouldn’t even need to engage
+            too deeply with the wider project organisation; just see a list of
             valuable quickwins that you can tackle rapidly to add value to any
             team that needs it."
           </Text>

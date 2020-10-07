@@ -1,15 +1,12 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { Container, Text } from 'theme-ui'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/SEO'
 
 const NotFound = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Commit | 404</title>
-        <meta name="description" content="Not Found" />
-      </Helmet>
+      <SEO />
       <Container
         sx={{
           padding: 4,

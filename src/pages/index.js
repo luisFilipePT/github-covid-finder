@@ -1,11 +1,11 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
-import { Helmet } from 'react-helmet'
 import { Grid } from 'theme-ui'
 import Layout from '../components/layout'
 import RepoCard from '../components/repoCard'
 import Search from '../components/search'
 import mockRepos from '../mocks/mockRepos'
 import Pagination from '../components/pagination'
+import SEO from '../components/SEO'
 
 const URL = 'https://api.github.com/search/repositories?q=covid'
 const INITIAL_STATE = {
@@ -53,7 +53,7 @@ const buildSearchQuery = searchState => {
 }
 
 const Index = () => {
-  const refSearch = useRef(null);
+  const refSearch = useRef(null)
   const [repos, setRepos] = useState(null)
   const [totalResults, setTotalResults] = useState(null)
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
@@ -93,14 +93,8 @@ const Index = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Committed | Home</title>
-        <meta
-          name="description"
-          content="Finder for repos on GitHub related to Corona"
-        />
-      </Helmet>
-      <span ref={refSearch}/>
+      <SEO />
+      <span ref={refSearch} />
       <Search
         onSearchChange={onSearchChange('search')}
         onSortChange={onSearchChange('sort')}
