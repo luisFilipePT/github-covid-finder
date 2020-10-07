@@ -1,4 +1,5 @@
 export default {
+  useColorSchemeMediaQuery: true,
   colors: {
     text: "#000",
     background: "#fff",
