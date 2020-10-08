@@ -6,7 +6,7 @@ import Footer from './footer'
 
 import './layout.css'
 
-const PageLayout = ({ data, children }) => {
+const PageLayout = ({ data, children, isShowSearch, searchCompProps }) => {
   const siteData = data.siteData
 
   return (
@@ -21,6 +21,8 @@ const PageLayout = ({ data, children }) => {
       <Header
         sx={{
         }}
+        isShowSearch={isShowSearch}
+        searchCompProps={searchCompProps}
         title={siteData.siteMetadata.description} />
       <Flex
         as="main"
@@ -30,12 +32,13 @@ const PageLayout = ({ data, children }) => {
           flexDirection: 'column',
           alignItems: 'center',
           p: ['20px 0'],
+          position: 'relative',
         }}
       >
         <Box
           sx={{
+            px: '15px',
             maxWidth: ['100%', '768px', '992px', '1400px'],
-            px: '15px'
           }}>
           {children}
         </Box>
