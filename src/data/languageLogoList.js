@@ -1,0 +1,1 @@
+export const languageLogoList = ['Abap','TeX','Ada', 'C / C++', 'C#', 'Cobol', 'Dart', 'Delphi', 'Go', 'Groovy', 'Haskell','HTML', 'Julia', 'Kotlin', 'Java', 'Javascript', 'Lua', 'Matlab', 'Objective-C', 'Perl', 'PHP', 'Python', 'R', 'Ruby', 'Rust', 'Scala', 'Swift', 'TypeScript', 'VBA', 'Visual Basic', 'Vue']
