@@ -8,11 +8,7 @@ const Search = ({
   onSearchChange,
   onSortChange,
   onFilterChange,
-  searchState,
-  fetchData,
-  setRepos,
-  setTotalResults,
-  setIsFetchingData,
+  onSearchIconClick,
 }) => {
   return (
     <Grid
@@ -40,6 +36,9 @@ const Search = ({
             '&:focus': {
               outline: 0
             },
+            '@media only screen and (max-width: 320px)': {
+              fontSize: 13,
+            },
           }}
           onKeyPress={e => (e.key === 'Enter' ? onSearchChange(e) : {})}
           placeholder="Search Covid-19 related repos"
@@ -54,18 +53,7 @@ const Search = ({
             cursor: 'pointer',
             position: 'absolute',
           }}
-          onClick={async () => {
-            setIsFetchingData(true)
-
-            const data = await fetchData(searchState)
-
-            if (data) {
-              setRepos(data)
-              setTotalResults(data.total_count)
-            }
-
-            setIsFetchingData(false)
-          }}
+          onClick={onSearchIconClick}
         />
 
         <Label
@@ -103,6 +91,9 @@ const Search = ({
                 fill: 'text',
               },
               fontSize: 15,
+              '@media only screen and (max-width: 320px)': {
+                fontSize: 13,
+              },
               '&:focus': {
                 outline: 0
               },
@@ -129,6 +120,9 @@ const Search = ({
                 fill: 'text',
               },
               fontSize: 15,
+              '@media only screen and (max-width: 320px)': {
+                fontSize: 13,
+              },
               '&:focus': {
                 outline: 0
               },
