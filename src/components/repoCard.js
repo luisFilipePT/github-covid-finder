@@ -73,8 +73,13 @@ const RepoCard = ({ repo }) => {
   { 
     if(languageLogoList.includes(repo.language))
     {
-      var langLogo='https://raw.githubusercontent.com/aj-ya/github-covid-finder/pr/add_logos/src/images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';
+      var langLogo='https://raw.githubusercontent.com/aj-ya/github-covid-finder/pr/add_logos/src/images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';//loading the image form github and not local files.replace function to replace one or more whitespaces with a single underscore
       return(<img width="16px" height="16px" src={langLogo} alt={repo.language} />)
+      //var langLogo='../images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';
+      //return(<img width="16px" height="16px" src={require(langLogo)} alt={repo.language} />)
+      //require() fails when a dynamic path is passed.
+      //possible solution at  https://stackoverflow.com/questions/52109907/react-require-error-cannot-find-module 
+      //couldnt quite work it out 
     }
     else
     {
