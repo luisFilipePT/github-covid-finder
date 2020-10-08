@@ -5,6 +5,7 @@ import SearchIcon from "../images/icons/search.inline.svg"
 import { githubLanguages } from '../data/githubLanguages'
 
 const Search = ({
+  searchState,
   onSearchChange,
   onSortChange,
   onFilterChange,
@@ -37,7 +38,9 @@ const Search = ({
               fontSize: 13,
             },
           }}
-          onKeyPress={e => (e.key === 'Enter' ? onSearchChange(e) : {})}
+          value={searchState.term}
+          onChange={onSearchChange}
+          onKeyPress={e => (e.key === 'Enter' ? onSearchIconClick() : {})}
           placeholder="Search Covid-19 related repos"
         />
 
@@ -89,7 +92,9 @@ const Search = ({
                 outline: 0
               },
             }}
-            defaultValue="stars" onChange={e => onSortChange(e)}>
+            value={searchState.sort}
+            onChange={e => onSortChange(e)}
+          >
             <option value="stars">Sort by Stars</option>
             <option value="">Sort by Best Match</option>
             <option value="help-wanted-issues">
@@ -112,7 +117,9 @@ const Search = ({
                 outline: 0
               },
             }}
-            defaultValue="" onChange={e => onFilterChange(e)}>
+            value={searchState.filter}
+            onChange={e => onFilterChange(e)}
+          >
             <option value="">All Languages</option>
             {githubLanguages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
           </Select>

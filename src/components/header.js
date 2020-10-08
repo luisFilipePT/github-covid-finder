@@ -70,6 +70,7 @@ const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
                 <Search {...searchCompProps}/>
               </Box>
               <Button
+                name="toggle-modal-with-search"
                 onClick={toggleModal}
                 backgroundColor="rgb(157, 31, 30)"
                 sx={{
