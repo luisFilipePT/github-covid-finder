@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Box, Flex, Text, Image } from 'theme-ui'
+import { Box, Flex, Text, Image, Button } from 'theme-ui'
 
 import Search from './search'
 import mainLogo from '../../src/images/logo-white.svg'
 import GithubIcon from "../images/icons/github.inline.svg"
+import SearchIcon from "../images/icons/search.inline.svg"
 
-const Header = ({ isShowSearch, searchCompProps }) => {
+const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
   return (
     <Box
       sx={{
@@ -44,9 +45,19 @@ const Header = ({ isShowSearch, searchCompProps }) => {
           </Text>
           { isShowSearch &&
             <Box
-              m="16px 16px 0px 16px"
               sx={{
                 width: '76%',
+                margin: '16px 16px 0px 16px',
+                '@media only screen and (max-width: 916px)': {
+                  marginTop: 0,
+                  width: 'auto',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  margin: '0px 16px 0px auto',
+                },
+                '@media only screen and (max-width: 320px)': {
+                  margin: '0px 6px',
+                },
               }}
             >
               <Box
@@ -58,22 +69,32 @@ const Header = ({ isShowSearch, searchCompProps }) => {
               >
                 <Search {...searchCompProps}/>
               </Box>
-              <Box
+              <Button
+                onClick={toggleModal}
+                backgroundColor="rgb(157, 31, 30)"
                 sx={{
-                  display: 'none',
-                  '@media only screen and (max-width: 916px)': {
-                    display: 'initial',
+                  padding: '6px 12px',
+                  '@media only screen and (min-width: 916px)': {
+                    display: 'none',
                   },
                 }}
               >
-              </Box>
+                <SearchIcon
+                  style={{
+                    width: 16,
+                    height: 16,
+                  }}
+                />
+              </Button>
             </Box>
           }
         </Flex>
         <Flex
-          mb="8px"
           sx={{
             justifyContent: 'space-between',
+            '@media only screen and (min-width: 916px)': {
+              marginBottom: 9,
+            },
           }}
         >
           <Link to="/about">
