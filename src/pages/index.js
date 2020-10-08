@@ -1,12 +1,15 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
 import { Helmet } from 'react-helmet'
-import { Grid, Spinner } from 'theme-ui'
+import { Grid, Spinner, Box, Flex } from 'theme-ui'
 
 import * as githubApi from '../api/github'
 import Layout from '../components/layout'
 import RepoCard from '../components/repoCard'
 import mockRepos from '../mocks/mockRepos'
 import Pagination from '../components/pagination'
+import Search from '../components/search'
+
+import '../styles/main.css'
 
 const INITIAL_STATE = {
   term: '',
@@ -66,6 +69,7 @@ const Index = () => {
   const [repos, setRepos] = useState(null)
   const [totalResults, setTotalResults] = useState(null)
   const [isFetchingData, setIsFetchingData] = useState(true)
+  const [isShowModal, setIsShowModal] = useState(false)
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
@@ -104,55 +108,98 @@ const Index = () => {
     dispatch({ type: field, payload: e.target.value })
   }
 
+  const onSearchIconClick = async () => {
+    setIsFetchingData(true)
+
+    if (isShowModal) {
+      setIsShowModal(false)
+    }
+
+    const data = await fetchData(searchState)
+
+    if (data) {
+      setRepos(data)
+      setTotalResults(data.total_count)
+    }
+
+    setIsFetchingData(false)
+  }
+
   if (!repos) return null
 
+  const searchCompProps = {
+    onSearchIconClick,
+    onSortChange: onSearchChange('sort'),
+    onSearchChange: onSearchChange('search'),
+    onFilterChange: onSearchChange('filter'),
+  }
+
   return (
-    <Layout
-      isShowSearch
-      searchCompProps={{
-        setRepos,
-        setTotalResults,
-        fetchData,
-        searchState,
-        setIsFetchingData,
-        onSearchChange: onSearchChange('search'),
-        onSortChange: onSearchChange('sort'),
-        onFilterChange: onSearchChange('filter'),
-      }}
-    >
-      <Helmet>
-        <title>Committed | Home</title>
-        <meta
-          name="description"
-          content="Finder for repos on GitHub related to Corona"
-        />
-      </Helmet>
-      <span ref={refSearch}/>
-      { isFetchingData
-        ? <Spinner
-            color="rgb(255, 65, 54)"
-            sx={{
-              top: '50%',
-              left: '50%',
-              position: 'absolute',
-              transform: 'translate(-50%, -50%)',
-            }}
+    <>
+      <Layout
+        isShowSearch
+        isShowModal={isShowModal}
+        searchCompProps={searchCompProps}
+        toggleModal={() => {
+          setIsShowModal(!isShowModal)
+        }}
+      >
+        <Helmet>
+          <title>Committed | Home</title>
+          <meta
+            name="description"
+            content="Finder for repos on GitHub related to Corona"
           />
-        : <>
-            <Grid columns={[1, 1, 1, 3]}>
-              {repos.items.map(repo => (
-                <RepoCard key={repo.id} repo={repo} />
-              ))}
-            </Grid>
-            <Pagination
-              pageUp={onSearchChange('pageUp')}
-              pageDown={onSearchChange('pageDown')}
-              currentPage={searchState.page}
-              totalResults={totalResults}
+        </Helmet>
+        <span ref={refSearch}/>
+        { isFetchingData
+          ? <Spinner
+              color="rgb(255, 65, 54)"
+              sx={{
+                top: '50%',
+                left: '50%',
+                position: 'absolute',
+                transform: 'translate(-50%, -50%)',
+              }}
             />
-          </>
-      }
-    </Layout>
+          : <>
+              <Grid columns={[1, 1, 1, 3]}>
+                {repos.items.map(repo => (
+                  <RepoCard key={repo.id} repo={repo} />
+                ))}
+              </Grid>
+              <Pagination
+                pageUp={onSearchChange('pageUp')}
+                pageDown={onSearchChange('pageDown')}
+                currentPage={searchState.page}
+                totalResults={totalResults}
+              />
+            </>
+        }
+      </Layout>
+      <Flex
+        id="modal"
+        className={isShowModal ? 'active' : null}
+      >
+        <Box
+          p="16px"
+          bg="rgb(64,64,64,0.9)"
+          sx={{
+            maxWidth: 660,
+            margin: 'auto',
+            borderRadius: 6,
+            '@media only screen and (max-width: 425px)': {
+              width: 360,
+            },
+            '@media only screen and (max-width: 320px)': {
+              width: 300,
+            },
+          }}
+        >
+          <Search {...searchCompProps}/>
+        </Box>
+      </Flex>
+    </>
   )
 }
 
