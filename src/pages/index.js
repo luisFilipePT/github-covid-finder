@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
-import { Grid, Spinner, Box, Flex } from 'theme-ui'
+import { Grid, Spinner, Button, Box, Flex } from 'theme-ui'
 
 import * as githubApi from '../api/github'
 import Layout from '../components/layout'
@@ -105,6 +105,7 @@ const Index = () => {
       refSearch.current.scrollIntoView()
       return
     }
+
     dispatch({ type: field, payload: e.target.value })
   }
 
@@ -125,9 +126,14 @@ const Index = () => {
     setIsFetchingData(false)
   }
 
+  const toggleModal = () => {
+    setIsShowModal(!isShowModal)
+  }
+
   if (!repos) return null
 
   const searchCompProps = {
+    searchState,
     onSearchIconClick,
     onSortChange: onSearchChange('sort'),
     onSearchChange: onSearchChange('search'),
@@ -139,10 +145,8 @@ const Index = () => {
       <Layout
         isShowSearch
         isShowModal={isShowModal}
+        toggleModal={toggleModal}
         searchCompProps={searchCompProps}
-        toggleModal={() => {
-          setIsShowModal(!isShowModal)
-        }}
       >
         <SEO/>
         <span ref={refSearch}/>
@@ -175,13 +179,15 @@ const Index = () => {
         id="modal"
         className={isShowModal ? 'active' : null}
       >
-        <Box
+        <Flex
           p="16px"
           bg="rgb(64,64,64,0.9)"
           sx={{
             maxWidth: 660,
             margin: 'auto',
             borderRadius: 6,
+            alignItems: 'flex-end',
+            flexDirection: 'column',
             '@media only screen and (max-width: 425px)': {
               width: 360,
             },
@@ -191,7 +197,14 @@ const Index = () => {
           }}
         >
           <Search {...searchCompProps}/>
-        </Box>
+          <Button
+            mt="8px"
+            backgroundColor="rgb(186, 65, 54)"
+            onClick={toggleModal}
+          >
+            Close
+          </Button>
+        </Flex>
       </Flex>
     </>
   )
