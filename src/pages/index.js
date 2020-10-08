@@ -1,14 +1,13 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
 import { Helmet } from 'react-helmet'
-import { Grid } from 'theme-ui'
+import { Grid, Spinner } from 'theme-ui'
 
+import * as githubApi from '../api/github'
 import Layout from '../components/layout'
 import RepoCard from '../components/repoCard'
-import Search from '../components/search'
 import mockRepos from '../mocks/mockRepos'
 import Pagination from '../components/pagination'
 
-const URL = 'https://api.github.com/search/repositories?q=covid'
 const INITIAL_STATE = {
   term: '',
   sort: 'stars',
@@ -58,37 +57,36 @@ const buildSearchQuery = searchState => {
   return `${query}&per_page=30&page=${searchState.page}`
 }
 
-async function fetchData(query) {
-  try {
-    const response = await fetch(`${URL}${buildSearchQuery(query)}`)
-
-    const data = await response.json()
-
-    return data
-  } catch (e) {
-    console.log('error', e)
-  }
-
-  return null
+function fetchData(searchState) {
+  return githubApi.searchCovidRelatedRepositories(buildSearchQuery(searchState))
 }
 
 const Index = () => {
   const refSearch = useRef(null);
   const [repos, setRepos] = useState(null)
   const [totalResults, setTotalResults] = useState(null)
+  const [isFetchingData, setIsFetchingData] = useState(true)
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
     const fetchDataAndSetState = async () => {
-      const data = fetchData(searchState)
+      const data = await fetchData(searchState)
 
       if (data) {
         setRepos(data)
         setTotalResults(data.total_count)
       }
+
+      setIsFetchingData(false)
     }
     // Avoid request while developing
-    process.env.NODE_ENV === 'development' ? setRepos(mockRepos) : fetchDataAndSetState()
+    if (process.env.NODE_ENV === 'development') {
+      setRepos(mockRepos)
+      setIsFetchingData(false)
+      return
+    }
+
+    fetchDataAndSetState()
   }, [searchState])
 
   const onSearchChange = field => e => {
@@ -109,7 +107,19 @@ const Index = () => {
   if (!repos) return null
 
   return (
-    <Layout>
+    <Layout
+      isShowSearch
+      searchCompProps={{
+        setRepos,
+        setTotalResults,
+        fetchData,
+        searchState,
+        setIsFetchingData,
+        onSearchChange: onSearchChange('search'),
+        onSortChange: onSearchChange('sort'),
+        onFilterChange: onSearchChange('filter'),
+      }}
+    >
       <Helmet>
         <title>Committed | Home</title>
         <meta
@@ -118,26 +128,30 @@ const Index = () => {
         />
       </Helmet>
       <span ref={refSearch}/>
-      <Search
-        setRepos={setRepos}
-        setTotalResults={setTotalResults}
-        fetchData={fetchData}
-        searchState={searchState}
-        onSearchChange={onSearchChange('search')}
-        onSortChange={onSearchChange('sort')}
-        onFilterChange={onSearchChange('filter')}
-      />
-      <Grid columns={[1, 1, 1, 3]}>
-        {repos.items.map(repo => (
-          <RepoCard key={repo.id} repo={repo} />
-        ))}
-      </Grid>
-      <Pagination
-        pageUp={onSearchChange('pageUp')}
-        pageDown={onSearchChange('pageDown')}
-        currentPage={searchState.page}
-        totalResults={totalResults}
-      />
+      { isFetchingData
+        ? <Spinner
+            color="rgb(255, 65, 54)"
+            sx={{
+              top: '50%',
+              left: '50%',
+              position: 'absolute',
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
+        : <>
+            <Grid columns={[1, 1, 1, 3]}>
+              {repos.items.map(repo => (
+                <RepoCard key={repo.id} repo={repo} />
+              ))}
+            </Grid>
+            <Pagination
+              pageUp={onSearchChange('pageUp')}
+              pageDown={onSearchChange('pageDown')}
+              currentPage={searchState.page}
+              totalResults={totalResults}
+            />
+          </>
+      }
     </Layout>
   )
 }
