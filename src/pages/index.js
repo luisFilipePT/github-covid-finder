@@ -91,6 +91,7 @@ const Index = () => {
     }
 
     fetchDataAndSetState()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onSearchChange = field => e => {
