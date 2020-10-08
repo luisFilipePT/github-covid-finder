@@ -73,7 +73,7 @@ const RepoCard = ({ repo }) => {
   { 
     if(languageLogoList.includes(repo.language))
     {
-      var langLogo='https://raw.githubusercontent.com/aj-ya/github-covid-finder/pr/add_logos/src/images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';//loading the image form github and not local files.replace function to replace one or more whitespaces with a single underscore
+      var langLogo='https://raw.githubusercontent.com/aj-ya/github-covid-finder/pr/add_logos/src/images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg?sanitize=true';//loading the image form github and not local files.replace function to replace one or more whitespaces with a single underscore
       return(<img width="16px" height="16px" src={langLogo} alt={repo.language} />)
       //var langLogo='../images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';
       //return(<img width="16px" height="16px" src={require(langLogo)} alt={repo.language} />)
