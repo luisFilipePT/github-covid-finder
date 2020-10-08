@@ -91,7 +91,7 @@ const Index = () => {
     }
 
     fetchDataAndSetState()
-  }, [searchState])
+  }, [])
 
   const onSearchChange = field => e => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
