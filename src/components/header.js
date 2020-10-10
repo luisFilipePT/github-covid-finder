@@ -96,6 +96,7 @@ const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
         </Flex>
         <Flex
           sx={{
+            alignItems: 'center',
             justifyContent: 'space-between',
             '@media only screen and (min-width: 916px)': {
               marginBottom: 9,
