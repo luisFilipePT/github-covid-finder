@@ -8,6 +8,7 @@ import mockRepos from '../mocks/mockRepos'
 import Pagination from '../components/pagination'
 import SEO from '../components/SEO'
 import Search from '../components/search'
+import { usePrevious } from '../hooks/usePrevious'
 
 import '../styles/main.css'
 
@@ -71,7 +72,8 @@ const Index = () => {
   const [isFetchingData, setIsFetchingData] = useState(true)
   const [isShowModal, setIsShowModal] = useState(false)
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
-  const [colorMode, _] = useColorMode()
+  const previousSearchState = usePrevious({ ...searchState })
+  const [colorMode, _setColorMode] = useColorMode()
 
   useEffect(() => {
     const fetchDataAndSetState = async () => {
@@ -112,6 +114,14 @@ const Index = () => {
   }
 
   const onSearchIconClick = async () => {
+    if (
+      previousSearchState.term === searchState.term &&
+      previousSearchState.sort === searchState.sort &&
+      previousSearchState.filter === searchState.filter
+    ) {
+      return
+    }
+
     setIsFetchingData(true)
 
     if (isShowModal) {
