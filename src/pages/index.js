@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
-import { Grid, Spinner, Button, Flex, useColorMode } from 'theme-ui'
+import { Grid, Spinner, Button, Flex, useColorMode, Box, Text } from 'theme-ui'
 
 import * as githubApi from '../api/github'
 import Layout from '../components/layout'
@@ -162,19 +162,37 @@ const Index = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             />
-          : <>
-              <Grid columns={[1, 1, 1, 3]}>
-                {repos.items.map(repo => (
-                  <RepoCard key={repo.id} repo={repo} />
-                ))}
-              </Grid>
-              <Pagination
-                pageUp={onSearchChange('pageUp')}
-                pageDown={onSearchChange('pageDown')}
-                currentPage={searchState.page}
-                totalResults={totalResults}
-              />
-            </>
+          : repos.items.length > 0
+              ? <>
+                  <Grid columns={[1, 1, 1, 3]}>
+                    {repos.items.map(repo => (
+                      <RepoCard key={repo.id} repo={repo} />
+                    ))}
+                  </Grid>
+                  <Pagination
+                    pageUp={onSearchChange('pageUp')}
+                    pageDown={onSearchChange('pageDown')}
+                    currentPage={searchState.page}
+                    totalResults={totalResults}
+                  />
+                </>
+              : <Box
+                  sx={{
+                    top: '50%',
+                    left: '50%',
+                    position: 'absolute',
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                >
+                  <Text
+                    sx={{
+                      fontSize: 22,
+                      fontFamily: 'inter',
+                    }}
+                  >
+                    No result found
+                  </Text>
+                </Box>
         }
       </Layout>
       <Flex
