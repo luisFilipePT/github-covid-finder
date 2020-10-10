@@ -6,7 +6,7 @@ import Footer from './footer'
 
 import './layout.css'
 
-const PageLayout = ({ data, children }) => {
+const PageLayout = ({ data, children, isShowModal, isShowSearch, toggleModal, searchCompProps }) => {
   const siteData = data.siteData
 
   return (
@@ -15,12 +15,16 @@ const PageLayout = ({ data, children }) => {
         flexDirection: 'column',
         height: '100vh',
         overflow: 'hidden',
-        backgroundColor: 'background'
+        backgroundColor: `background`,
+        filter: `blur(${isShowModal ? 3 : 0}px)`,
       }}
     >
       <Header
         sx={{
         }}
+        toggleModal={toggleModal}
+        isShowSearch={isShowSearch}
+        searchCompProps={searchCompProps}
         title={siteData.siteMetadata.description} />
       <Flex
         as="main"
@@ -30,12 +34,13 @@ const PageLayout = ({ data, children }) => {
           flexDirection: 'column',
           alignItems: 'center',
           p: ['20px 0'],
+          position: 'relative',
         }}
       >
         <Box
           sx={{
+            px: '15px',
             maxWidth: ['100%', '768px', '992px', '1400px'],
-            px: '15px'
           }}>
           {children}
         </Box>

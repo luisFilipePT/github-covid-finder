@@ -4,19 +4,22 @@ import SearchIcon from "../images/icons/search.inline.svg"
 
 import { githubLanguages } from '../data/githubLanguages'
 
-const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
+const Search = ({
+  searchState,
+  onSearchChange,
+  onSortChange,
+  onFilterChange,
+  onSearchIconClick,
+}) => {
   return (
     <Grid
-      sx={{
-        mb: 15
-      }}
-      columns={[1, 2]}>
+      columns={[1, 2]}
+    >
       <Box
         sx={{
           width: '100%',
           color: 'text',
           fontFamily: 'inter',
-          mb: '10px',
           position: 'relative',
         }}
       >
@@ -29,36 +32,45 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
             borderColor: 'cardBorder',
             borderRadius: 8,
             height: 45,
-            fontSize: 16,
+            fontSize: 15,
             pr: '40px',
             '&:focus': {
               outline: 0
             },
+            '@media only screen and (max-width: 320px)': {
+              fontSize: 13,
+            },
           }}
-          onKeyPress={e => (e.key === 'Enter' ? onSearchChange(e) : {})}
+          value={searchState.term}
+          onChange={onSearchChange}
+          onKeyPress={e => (e.key === 'Enter' ? onSearchIconClick() : {})}
           placeholder="Search Covid-19 related repos"
         />
 
-        <SearchIcon style={{
-          width: 22,
-          height: 22,
-          position: 'absolute',
-          top: 10,
-          right: 10,
-        }} />
+        <SearchIcon
+          style={{
+            top: 10,
+            right: 10,
+            width: 22,
+            height: 22,
+            cursor: 'pointer',
+            position: 'absolute',
+          }}
+          onClick={onSearchIconClick}
+        />
 
         <Label
           sx={{
-            fontSize: 12,
+            fontSize: 9,
+            padding: '0px 3px',
             display: 'block',
-            mt: '10px',
-            opacity: '0.8'
+            mt: '8px',
+            opacity: '0.6'
           }}
         >
-          Press Enter when you are done (GitHub API has a rate limit of<b>&nbsp; 10
-          requests per minute </b> &nbsp;if something not working please wait...)
+          Press Enter when you are done (GitHub API has a rate limit of<a style={{ cursor: 'pointer', color: 'rgb(255, 65, 54)' }} href="https://developer.github.com/v3/search/#rate-limit" target="_blank" rel="noopener noreferrer"><b>&nbsp; 10
+          requests per minute </b> &nbsp;</a>if something not working please wait...)
         </Label>
-
       </Box>
       <Grid
         columns={[2, 2]}
@@ -66,7 +78,6 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
           width: '100%',
           color: 'white',
           fontFamily: 'inter',
-          mb: '10px',
         }}
       >
         <Box>
@@ -79,15 +90,20 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
               borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
-              fontSize: 16,
               '& + svg': {
                 fill: 'text',
+              },
+              fontSize: 15,
+              '@media only screen and (max-width: 320px)': {
+                fontSize: 13,
               },
               '&:focus': {
                 outline: 0
               },
             }}
-            defaultValue="stars" onChange={e => onSortChange(e)}>
+            value={searchState.sort}
+            onChange={e => onSortChange(e)}
+          >
             <option value="stars">Sort by Stars</option>
             <option value="">Sort by Best Match</option>
             <option value="help-wanted-issues">
@@ -105,15 +121,20 @@ const Search = ({ onSearchChange, onSortChange, onFilterChange }) => {
               borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
-              fontSize: 16,
               '& + svg': {
                 fill: 'text',
+              },
+              fontSize: 15,
+              '@media only screen and (max-width: 320px)': {
+                fontSize: 13,
               },
               '&:focus': {
                 outline: 0
               },
             }}
-            defaultValue="" onChange={e => onFilterChange(e)}>
+            value={searchState.filter}
+            onChange={e => onFilterChange(e)}
+          >
             <option value="">All Languages</option>
             {githubLanguages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
           </Select>
