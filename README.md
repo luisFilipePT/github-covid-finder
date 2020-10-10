@@ -1,3 +1,5 @@
+![Screenshot](readme-logo.png)
+
 <h1 align="center">
   Committed to fight Covid
 </h1>
@@ -5,6 +7,12 @@
 <h3 align="center">
   A website to find GitHub public repos related to Covid/Corona virus
 </h3>
+
+## About project
+
+To face the worldwide Coronavirus crisis, we want to simplify the search for repositories with projects that work in the fight against covid19. In order to join efforts between the contribution of programmers in a more direct and practical way, we provide a search tool that makes it easier to find projects related to combating covid19, allowing people to be more agile to start cooperating in this cause through GitHub.
+
+![Screenshot](cardSample.png)
 
 [![GitHub Covid Finder released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
