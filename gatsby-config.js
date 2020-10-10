@@ -2,8 +2,10 @@ const path = require(`path`)
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby`,
-    description: `Committed to fight Corona-19`,
+    title: `GitHub Covid Finder`,
+    description: `Find Github repositories related to COVID-19`,
+    url: `https://commit-to-fight-covid.netlify.app/`,
+    image: '/images/app-screenshot.png',
   },
   plugins: [
     {
@@ -39,9 +41,9 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /\.inline\.svg$/
-        }
-      }
+          include: /\.inline\.svg$/,
+        },
+      },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
