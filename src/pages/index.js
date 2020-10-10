@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
-import { Grid, Spinner, Button, Box, Flex } from 'theme-ui'
+import { Grid, Spinner, Button, Flex } from 'theme-ui'
 
 import * as githubApi from '../api/github'
 import Layout from '../components/layout'

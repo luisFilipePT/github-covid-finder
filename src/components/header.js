@@ -6,7 +6,6 @@ import logoBlack from '../../src/images/logo.svg'
 import GithubIcon from "../images/icons/github.inline.svg"
 
 import Search from './search'
-import mainLogo from '../../src/images/logo-white.svg'
 import SearchIcon from "../images/icons/search.inline.svg"
 
 const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
