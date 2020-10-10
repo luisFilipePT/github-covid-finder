@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState, useRef } from 'react'
-import { Grid, Spinner, Button, Flex } from 'theme-ui'
+import { Grid, Spinner, Button, Flex, useColorMode } from 'theme-ui'
 
 import * as githubApi from '../api/github'
 import Layout from '../components/layout'
@@ -71,6 +71,7 @@ const Index = () => {
   const [isFetchingData, setIsFetchingData] = useState(true)
   const [isShowModal, setIsShowModal] = useState(false)
   const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE)
+  const [colorMode, _] = useColorMode()
 
   useEffect(() => {
     const fetchDataAndSetState = async () => {
@@ -182,7 +183,7 @@ const Index = () => {
       >
         <Flex
           p="16px"
-          bg="rgb(64,64,64,0.9)"
+          bg={colorMode === 'dark' ? 'rgba(64,64,64,0.9)' : 'rgba(255,255,255,0.7)'}
           sx={{
             maxWidth: 660,
             margin: 'auto',
@@ -202,6 +203,9 @@ const Index = () => {
             mt="8px"
             backgroundColor="rgb(186, 65, 54)"
             onClick={toggleModal}
+            sx={{
+              fontFamily: 'inter',
+            }}
           >
             Close
           </Button>
