@@ -11,20 +11,18 @@ const Search = ({
   searchState,
   fetchData,
   setRepos,
-  setTotalResults
+  setTotalResults,
+  setIsFetchingData,
 }) => {
   return (
     <Grid
-      sx={{
-        mb: 15
-      }}
-      columns={[1, 2]}>
+      columns={[1, 2]}
+    >
       <Box
         sx={{
           width: '100%',
           color: 'text',
           fontFamily: 'inter',
-          mb: '10px',
           position: 'relative',
         }}
       >
@@ -37,7 +35,7 @@ const Search = ({
             borderColor: 'cardBorder',
             borderRadius: 8,
             height: 45,
-            fontSize: 16,
+            fontSize: 15,
             pr: '40px',
             '&:focus': {
               outline: 0
@@ -57,27 +55,31 @@ const Search = ({
             position: 'absolute',
           }}
           onClick={async () => {
+            setIsFetchingData(true)
+
             const data = await fetchData(searchState)
 
             if (data) {
               setRepos(data)
               setTotalResults(data.total_count)
             }
+
+            setIsFetchingData(false)
           }}
         />
 
         <Label
           sx={{
-            fontSize: 12,
+            fontSize: 9,
+            padding: '0px 3px',
             display: 'block',
-            mt: '10px',
-            opacity: '0.8'
+            mt: '8px',
+            opacity: '0.6'
           }}
         >
-          Press Enter when you are done (GitHub API has a rate limit of<a style={{ cursor: 'pointer' }} href="https://developer.github.com/v3/search/#rate-limit" target="_blank" rel="noopener noreferrer"><b>&nbsp; 10
+          Press Enter when you are done (GitHub API has a rate limit of<a style={{ cursor: 'pointer', color: 'rgb(255, 65, 54)' }} href="https://developer.github.com/v3/search/#rate-limit" target="_blank" rel="noopener noreferrer"><b>&nbsp; 10
           requests per minute </b> &nbsp;</a>if something not working please wait...)
         </Label>
-
       </Box>
       <Grid
         columns={[2, 2]}
@@ -85,7 +87,6 @@ const Search = ({
           width: '100%',
           color: 'white',
           fontFamily: 'inter',
-          mb: '10px',
         }}
       >
         <Box>
@@ -98,10 +99,10 @@ const Search = ({
               borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
-              fontSize: 16,
               '& + svg': {
                 fill: 'text',
               },
+              fontSize: 15,
               '&:focus': {
                 outline: 0
               },
@@ -124,10 +125,10 @@ const Search = ({
               borderColor: 'cardBorder',
               borderRadius: 8,
               height: 45,
-              fontSize: 16,
               '& + svg': {
                 fill: 'text',
               },
+              fontSize: 15,
               '&:focus': {
                 outline: 0
               },
