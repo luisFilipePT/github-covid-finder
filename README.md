@@ -3,7 +3,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/def4d17b-fce3-422b-9d55-769dca8fe027/deploy-status)](https://github-covid-finder.netlify.com/)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <h1 align="center">
@@ -61,6 +61,9 @@ Thank's goes to these wonderful people ([emoji key](https://allcontributors.org/
     <td align="center"><a href="https://urmauur.com"><img src="https://avatars2.githubusercontent.com/u/10354610?v=4" width="100px;" alt=""/><br /><sub><b>Faisal Amir</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=urmauur" title="Code">💻</a> <a href="#design-urmauur" title="Design">🎨</a></td>
     <td align="center"><a href="https://timr.dev"><img src="https://avatars3.githubusercontent.com/u/39889198?v=4" width="100px;" alt=""/><br /><sub><b>Tim Rybicki</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=trybick" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/evandroLutz"><img src="https://avatars1.githubusercontent.com/u/48337261?v=4" width="100px;" alt=""/><br /><sub><b>evandroLutz</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=evandroLutz" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/xshadowlegendx"><img src="https://avatars2.githubusercontent.com/u/21999889?v=4" width="100px;" alt=""/><br /><sub><b>xshadowlegendx</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=xshadowlegendx" title="Code">💻</a></td>
   </tr>
 </table>
 
