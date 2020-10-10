@@ -1,30 +1,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { Box, Flex, Text, Image, useColorMode, Button } from 'theme-ui'
 import logoWhite from '../../src/images/logo-white.svg'
 import logoBlack from '../../src/images/logo.svg'
 import GithubIcon from "../images/icons/github.inline.svg"
-const Header = () => {
-  const [colorMode, setColorMode] = useColorMode()
-=======
-import { Box, Flex, Text, Image } from 'theme-ui'
-=======
-import { Box, Flex, Text, Image, Button } from 'theme-ui'
->>>>>>> show open search modal button when on small screen
 
 import Search from './search'
 import mainLogo from '../../src/images/logo-white.svg'
-import GithubIcon from "../images/icons/github.inline.svg"
 import SearchIcon from "../images/icons/search.inline.svg"
 
-<<<<<<< HEAD
-const Header = ({ isShowSearch, searchCompProps }) => {
->>>>>>> pass search comp prop to search component and conditionally check if should show search
-=======
 const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
->>>>>>> show open search modal button when on small screen
+  const [colorMode, setColorMode] = useColorMode()
   return (
     <Box
       sx={{
@@ -111,13 +97,9 @@ const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
         <Flex
           sx={{
             justifyContent: 'space-between',
-<<<<<<< HEAD
-            alignItems: 'center',
-=======
             '@media only screen and (min-width: 916px)': {
               marginBottom: 9,
             },
->>>>>>> show open search modal button when on small screen
           }}
         >
           <Link to="/about">
