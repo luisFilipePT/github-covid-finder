@@ -53,6 +53,15 @@
         "code",
         "design"
       ]
+    },
+    {
+      "login": "trybick",
+      "name": "Tim Rybicki",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/39889198?v=4",
+      "profile": "https://timr.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
