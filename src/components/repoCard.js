@@ -4,7 +4,7 @@ import GithubIcon from "../images/icons/github.inline.svg"
 import CodeIcon from "../images/icons/code.inline.svg"
 import IssueIcon from "../images/icons/issue.inline.svg"
 import StarIcon from "../images/icons/star.inline.svg"
-import {languageLogoList} from "../data/languageLogoList.js"
+import {logoMapper} from "../data/languageLogoList.js"
 import './layout.css'
 const openGithubPage = (githubLink) => {
   window.open(githubLink, '_blank');
@@ -61,29 +61,35 @@ const RepoCard = ({ repo }) => {
             <GithubIcon />
           </span> Github</Text>
         </a>
-        <Text>
-          <span class="tooltip" role="img" aria-label="language" style={{ verticalAlign: 'middle' }}>
-          {displayLogo()}{checkNullLang()}            
-          </span>
-        </Text>
+        {displayLogo()}
       </Grid>
     </Card>
   )
+
   function displayLogo()
   { 
-    if(languageLogoList.includes(repo.language))
+    //check if logoMapper contains the repo.language as a key   
+    if(logoMapper[repo.language]!==undefined)
     {
-      var langLogo='https://raw.githubusercontent.com/aj-ya/github-covid-finder/pr/add_logos/src/images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg?sanitize=true';//loading the image form github and not local files.replace function to replace one or more whitespaces with a single underscore
-      return(<img width="16px" height="16px" src={langLogo} alt={repo.language} />)
-      //var langLogo='../images/icons/languages/'+repo.language.replace(/\s+/g,"_")+'.svg';
-      //return(<img width="16px" height="16px" src={require(langLogo)} alt={repo.language} />)
-      //require() fails when a dynamic path is passed.
-      //possible solution at  https://stackoverflow.com/questions/52109907/react-require-error-cannot-find-module 
-      //couldnt quite work it out 
+      return(<Text>
+        <span class="tooltip" role="img" aria-label="language" style={{ verticalAlign: 'middle' }}>
+        <img width="16px" height="16px" src={logoMapper[repo.language]} alt={repo.language} />
+        {checkNullLang()}
+        </span>
+        </Text>
+      )//checkNullLang() for tool tip visibility.
     }
+    //when either repo.language is null or not in logoMapper just displaying code icon with repo.language with no tooltip 
     else
     {
-      return (<CodeIcon />)
+      return (
+      <Text>
+        <span role="img" aria-label="code" style={{ verticalAlign: 'middle' }}>
+          <CodeIcon />
+        </span> 
+        {repo.language}
+      </Text>
+        )
     }
   }
 
