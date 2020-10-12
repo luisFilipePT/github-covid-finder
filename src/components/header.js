@@ -13,8 +13,7 @@ const Header = ({ isShowSearch, searchCompProps, toggleModal }) => {
   return (
     <Box
       sx={{
-        borderWidth: 1,
-        borderStyle: 'solid',
+        borderBottom: "1px solid",
         borderColor: 'cardBorder',
         marginBottom: '24px'
       }}>

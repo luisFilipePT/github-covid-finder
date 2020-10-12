@@ -9,6 +9,7 @@ import Pagination from '../components/pagination'
 import SEO from '../components/SEO'
 import Search from '../components/search'
 import { usePrevious } from '../hooks/usePrevious'
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 import '../styles/main.css'
 
@@ -86,6 +87,7 @@ const Index = () => {
 
       setIsFetchingData(false)
     }
+
     // Avoid request while developing
     if (process.env.NODE_ENV === 'development') {
       setRepos(mockRepos)
@@ -100,13 +102,13 @@ const Index = () => {
   const onSearchChange = field => e => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
       dispatch({ type: field, payload: searchState.page + 1 })
-      refSearch.current.scrollIntoView()
+      scrollTo('#wrapper')
       return
     }
 
     if (searchState.page > 1 && field === 'pageDown') {
       dispatch({ type: field, payload: searchState.page - 1 })
-      refSearch.current.scrollIntoView()
+      scrollTo('#wrapper')
       return
     }
 
@@ -161,7 +163,7 @@ const Index = () => {
         searchCompProps={searchCompProps}
       >
         <SEO/>
-        <span ref={refSearch}/>
+        <span id='wrapper' ref={refSearch}/>
         { isFetchingData
           ? <Spinner
               color="rgb(255, 65, 54)"
