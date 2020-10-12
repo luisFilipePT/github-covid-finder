@@ -83,12 +83,7 @@ const RepoCard = ({ repo }) => {
     else
     {
       return (
-      <Text>
-        <span role="img" aria-label="code" style={{ verticalAlign: 'middle' }}>
-          <CodeIcon />
-        </span> 
-        {repo.language}
-      </Text>
+      <Text><span role="img" aria-label="code" style={{ verticalAlign: 'middle' }}><CodeIcon /></span> {repo.language}</Text>
         )
     }
   }
