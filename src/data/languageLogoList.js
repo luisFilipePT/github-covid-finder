@@ -34,7 +34,7 @@ export const logoMapper = {
     'Vue':require('../images/icons/languages/Vue.svg'),
     'TSQL':require('../images/icons/languages/TSQL.svg'),
     'Stan':require('../images/icons/languages/Stan.png'), 
-    'CSS':require('../images/icons/languages/CSS.svg'), 
+    'CSS':require('../images/icons/languages/css.svg'), 
     /*
     format for future ease
     'Lang':require('../images/icons/languages/Lang.svg'),
