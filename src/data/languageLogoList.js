@@ -16,7 +16,7 @@ export const logoMapper = {
     'Julia':require('../images/icons/languages/Julia.svg'),
     'Kotlin':require('../images/icons/languages/Kotlin.svg'),
     'Java':require('../images/icons/languages/Java.svg'),
-    'Javascript':require('../images/icons/languages/Javascript.svg'),
+    'JavaScript':require('../images/icons/languages/Javascript.svg'),
     'Lua':require('../images/icons/languages/Lua.svg'),
     'Matlab':require('../images/icons/languages/Matlab.svg'),
     'Objective-C':require('../images/icons/languages/Objective-C.svg'),
