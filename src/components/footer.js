@@ -5,8 +5,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        borderWidth: 1,
-        borderStyle: 'solid',
+        borderTop: "1px solid",
         borderColor: 'cardBorder',
         py: '5px'
       }}>
