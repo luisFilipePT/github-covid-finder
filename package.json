@@ -32,11 +32,13 @@
     "gatsby-plugin-sharp": "^2.4.13",
     "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-theme-ui": "^0.3.0",
+    "gatsby-plugin-transition-link": "^1.20.2",
     "gatsby-source-filesystem": "^2.1.56",
     "gatsby-transformer-sharp": "^2.3.19",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
+    "react-pose": "^4.0.10",
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {

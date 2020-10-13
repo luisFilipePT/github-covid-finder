@@ -3,10 +3,24 @@ import { graphql, StaticQuery } from 'gatsby'
 import { Box, Flex } from 'theme-ui'
 import Header from './header'
 import Footer from './footer'
+import { TransitionState } from 'gatsby-plugin-transition-link'
+import posed from 'react-pose'
 
 import './layout.css'
 
-const PageLayout = ({ data, children, isShowModal, isShowSearch, toggleModal, searchCompProps }) => {
+const WrapperStyle = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+})
+
+const PageLayout = ({
+  data,
+  children,
+  isShowModal,
+  isShowSearch,
+  toggleModal,
+  searchCompProps,
+}) => {
   const siteData = data.siteData
 
   return (
@@ -20,12 +34,12 @@ const PageLayout = ({ data, children, isShowModal, isShowSearch, toggleModal, se
       }}
     >
       <Header
-        sx={{
-        }}
+        sx={{}}
         toggleModal={toggleModal}
         isShowSearch={isShowSearch}
         searchCompProps={searchCompProps}
-        title={siteData.siteMetadata.description} />
+        title={siteData.siteMetadata.description}
+      />
       <Flex
         as="main"
         sx={{
@@ -41,12 +55,21 @@ const PageLayout = ({ data, children, isShowModal, isShowSearch, toggleModal, se
           sx={{
             px: '15px',
             maxWidth: ['100%', '768px', '992px', '1400px'],
-          }}>
-          {children}
+          }}
+        >
+          <TransitionState>
+            {({ transitionStatus, exit, entry, mount }) => {
+              return (
+                <WrapperStyle pose={mount ? 'visible' : 'hidden'}>
+                  {children}
+                </WrapperStyle>
+              )
+            }}
+          </TransitionState>
         </Box>
       </Flex>
       <Footer />
-    </Flex >
+    </Flex>
   )
 }
 
