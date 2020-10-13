@@ -12,13 +12,13 @@ const About = () => {
           padding: 4,
           color: 'text',
           fontFamily: 'inter',
-          fontSize: 24,
           textAlign: 'center',
           backgroundColor: 'cardBackground',
           borderRadius: '8px',
           borderWidth: 1,
           borderStyle: 'solid',
           borderColor: 'cardBorder',
+          lineHeight: '24px',
         }}
       >
         <Box p={4}>
@@ -43,8 +43,7 @@ const About = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {' '}
-            this blogpost.
+            &nbsp;this blogpost.
           </Link>
         </p>
       </Container>
