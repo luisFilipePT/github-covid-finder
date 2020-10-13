@@ -1,10 +1,11 @@
 import React from 'react'
 import { Card, Grid, Text, Box } from 'theme-ui'
-import CodeIcon from "../images/icons/code.inline.svg"
 import GithubIcon from "../images/icons/github.inline.svg"
+import CodeIcon from "../images/icons/code.inline.svg"
 import IssueIcon from "../images/icons/issue.inline.svg"
 import StarIcon from "../images/icons/star.inline.svg"
-
+import {logoMapper} from "../data/languageLogoList.js"
+import './layout.css'
 const openGithubPage = (githubLink) => {
   window.open(githubLink, '_blank');
 };
@@ -51,20 +52,47 @@ const RepoCard = ({ repo }) => {
         <Text><span role="img" aria-label="star" style={{ verticalAlign: 'middle' }}>
           <StarIcon />
         </span> {repo.stargazers_count}</Text>
-        <Text><span role="img" aria-label="issues" style={{ verticalAlign: 'middle' }}>
+        <Text><span class="tooltip" role="img" aria-label="issues" style={{ verticalAlign: 'middle' }}>
           <IssueIcon />
+          <span class="tooltiptext">Open Issues</span>
         </span> {repo.open_issues_count}</Text>
         <a href={repo.html_url} style={{ color: 'currentColor' }}>
           <Text><span role="img" aria-label="github" style={{ verticalAlign: 'middle' }}>
             <GithubIcon />
           </span> Github</Text>
         </a>
-        <Text><span role="img" aria-label="code" style={{ verticalAlign: 'middle' }}>
-          <CodeIcon />
-        </span> {repo.language}</Text>
+        {displayLogo()}
       </Grid>
     </Card>
   )
-}
 
+  function displayLogo()
+  { 
+    //check if logoMapper contains the repo.language as a key   
+    if(logoMapper[repo.language]!==undefined)
+    {
+      return(<Text>
+        <span class="tooltip" role="img" aria-label="language" style={{ verticalAlign: 'middle' }}>
+        <img width="16px" height="16px" src={logoMapper[repo.language]} alt={repo.language} />
+        {checkNullLang()}
+        </span>
+        </Text>
+      )//checkNullLang() for tool tip visibility.
+    }
+    //when either repo.language is null or not in logoMapper just displaying code icon with repo.language with no tooltip 
+    else
+    {
+      return (
+      <Text><span role="img" aria-label="code" style={{ verticalAlign: 'middle' }}><CodeIcon /></span> {repo.language}</Text>
+        )
+    }
+  }
+
+  function checkNullLang()
+  {
+    if(repo.language!==null)
+      return(<span class="tooltiptext">{repo.language}</span>)
+  }
+}
 export default RepoCard
+
