@@ -3,7 +3,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/def4d17b-fce3-422b-9d55-769dca8fe027/deploy-status)](https://github-covid-finder.netlify.com/)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <h1 align="center">
@@ -64,6 +64,7 @@ Thank's goes to these wonderful people ([emoji key](https://allcontributors.org/
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/xshadowlegendx"><img src="https://avatars2.githubusercontent.com/u/21999889?v=4" width="100px;" alt=""/><br /><sub><b>xshadowlegendx</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=xshadowlegendx" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/aj-ya"><img src="https://avatars0.githubusercontent.com/u/59968173?v=4" width="100px;" alt=""/><br /><sub><b>Ajeya Bhat</b></sub></a><br /><a href="https://github.com/luisFilipePT/github-covid-finder/commits?author=aj-ya" title="Code">💻</a></td>
   </tr>
 </table>
 
