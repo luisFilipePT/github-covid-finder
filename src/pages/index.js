@@ -97,7 +97,7 @@ const Index = () => {
 
     fetchDataAndSetState()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [searchState])
 
   const onSearchChange = field => e => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
