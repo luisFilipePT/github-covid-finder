@@ -4,6 +4,7 @@ import CodeIcon from '../images/icons/code.inline.svg'
 import GithubIcon from '../images/icons/github.inline.svg'
 import IssueIcon from '../images/icons/issue.inline.svg'
 import StarIcon from '../images/icons/star.inline.svg'
+import { logoMapper } from '../data/languageLogoList.js'
 
 const openGithubPage = githubLink => {
   window.open(githubLink, '_blank')
@@ -83,16 +84,7 @@ const RepoCard = ({ repo }) => {
             Github
           </Text>
         </a>
-        <Text>
-          <span
-            role="img"
-            aria-label="code"
-            style={{ verticalAlign: 'middle' }}
-          >
-            <CodeIcon />
-          </span>{' '}
-          {repo.language}
-        </Text>
+        {displayLogo()}
       </Grid>
     </Card>
   )
@@ -103,7 +95,7 @@ const RepoCard = ({ repo }) => {
       return (
         <Text>
           <span
-            class="tooltip"
+            className="tooltip"
             role="img"
             aria-label="language"
             style={{ verticalAlign: 'middle' }}
@@ -138,7 +130,7 @@ const RepoCard = ({ repo }) => {
 
   function checkNullLang() {
     if (repo.language !== null)
-      return <span class="tooltiptext">{repo.language}</span>
+      return <span className="tooltiptext">{repo.language}</span>
   }
 }
 export default RepoCard

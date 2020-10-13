@@ -25,7 +25,6 @@ const NotFound = () => {
       </Container>
       <Container
         sx={{
-          color: 'white',
           fontFamily: 'inter',
           textAlign: 'center',
           backgroundColor: 'background',
