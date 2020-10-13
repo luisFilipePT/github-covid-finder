@@ -19,14 +19,14 @@
   "author": "@_luisFilipePT",
   "license": "ISC",
   "dependencies": {
-    "gatsby": "^2.24.73",
+    "gatsby": "^2.19.45",
     "gatsby-background-image": "^0.10.2",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-react-helmet": "^3.1.24",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.6.39",
+    "gatsby-plugin-sharp": "^2.4.13",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.56",
     "gatsby-transformer-sharp": "^2.3.19",
@@ -36,11 +36,6 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "babel-jest": "^26.5.2",
-    "babel-preset-gatsby": "^0.5.13",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.5.2",
-    "prettier": "1.19.1",
-    "react-test-renderer": "^16.13.1"
+    "prettier": "1.19.1"
   }
 }
