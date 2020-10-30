@@ -97,29 +97,32 @@ const Index = () => {
 
     fetchDataAndSetState()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchState])
+  }, [])
 
   const onSearchChange = field => e => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
-      dispatch({ type: field, payload: searchState.page + 1 })
       scrollTo('#wrapper')
+      dispatch({ type: field, payload: searchState.page + 1 })
+      onSearchIconClick(field)
       return
     }
 
     if (searchState.page > 1 && field === 'pageDown') {
-      dispatch({ type: field, payload: searchState.page - 1 })
       scrollTo('#wrapper')
+      dispatch({ type: field, payload: searchState.page - 1 })
+      onSearchIconClick(field)
       return
     }
 
     dispatch({ type: field, payload: e.target.value })
   }
 
-  const onSearchIconClick = async () => {
+  const onSearchIconClick = async field => {
     if (
       previousSearchState.term === searchState.term &&
       previousSearchState.sort === searchState.sort &&
-      previousSearchState.filter === searchState.filter
+      previousSearchState.filter === searchState.filter &&
+      field === ''
     ) {
       return
     }
