@@ -103,26 +103,25 @@ const Index = () => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
       scrollTo('#wrapper')
       dispatch({ type: field, payload: searchState.page + 1 })
-      onSearchIconClick(field)
       return
     }
 
     if (searchState.page > 1 && field === 'pageDown') {
       scrollTo('#wrapper')
       dispatch({ type: field, payload: searchState.page - 1 })
-      onSearchIconClick(field)
       return
     }
-
-    dispatch({ type: field, payload: e.target.value })
   }
 
-  const onSearchIconClick = async field => {
+  const onSearchIconClick = async (input, stars, language) => {
+    dispatch({ type: 'search', payload: input })
+    dispatch({ type: 'sort', payload: stars })
+    dispatch({ type: 'filter', payload: language })
+
     if (
       previousSearchState.term === searchState.term &&
       previousSearchState.sort === searchState.sort &&
-      previousSearchState.filter === searchState.filter &&
-      field === ''
+      previousSearchState.filter === searchState.filter
     ) {
       return
     }
