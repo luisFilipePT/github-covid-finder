@@ -31,15 +31,16 @@ const Pagination = ({ pageUp, pageDown, currentPage, totalResults }) => {
         justifyContent: 'center',
       }}
     >
-      <Button
-        disabled={currentPage === 1}
-        sx={{
-          ...ButtonStyle,
-        }}
-        onClick={pageDown}
-      >
-        &#8592;
-      </Button>
+      {currentPage !== 1 && (
+        <Button
+          sx={{
+            ...ButtonStyle,
+          }}
+          onClick={pageDown}
+        >
+          &#8592;
+        </Button>
+      )}
       <Text sx={{ color: 'text', px: 32, fontSize: 14 }}>
         Page {currentPage} ({totalResults} results)
       </Text>
