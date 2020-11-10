@@ -9,24 +9,10 @@ const NotFound = () => {
       <SEO />
       <Container
         sx={{
-          padding: 4,
-          color: 'white',
-          fontFamily: 'inter',
-          fontSize: 24,
-          textAlign: 'center',
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          borderRadius: '3px',
-        }}
-      >
-        <p>Not sure if the page you are searching exist!</p>
-        <p>While I check feel free to navigate to the Home page</p>
-      </Container>
-      <Container
-        sx={{
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backgroundColor: 'background',
           padding: 16,
           borderRadius: '3px',
-          marginTop: '60px',
+          marginTop: '80px',
           letterSpacing: '4px',
           fontSize: '56px',
           color: '#FF4136',
@@ -35,7 +21,19 @@ const NotFound = () => {
           fontWeight: 700,
         }}
       >
-        <Text>#STAYTHEFUCKHOME</Text>
+        <Text>#STAY THE FUCK HOME</Text>
+      </Container>
+      <Container
+        sx={{
+          fontFamily: 'inter',
+          textAlign: 'center',
+          backgroundColor: 'background',
+          color: 'text',
+          borderRadius: '3px',
+        }}
+      >
+        <p>Not sure if the page you are searching exist!</p>
+        <p>While I check feel free to navigate to the Home page</p>
       </Container>
     </Layout>
   )

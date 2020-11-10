@@ -9,6 +9,7 @@ import Pagination from '../components/pagination'
 import SEO from '../components/SEO'
 import Search from '../components/search'
 import { usePrevious } from '../hooks/usePrevious'
+import scrollTo from 'gatsby-plugin-smoothscroll'
 
 import '../styles/main.css'
 
@@ -86,6 +87,7 @@ const Index = () => {
 
       setIsFetchingData(false)
     }
+
     // Avoid request while developing
     if (process.env.NODE_ENV === 'development') {
       setRepos(mockRepos)
@@ -95,25 +97,27 @@ const Index = () => {
 
     fetchDataAndSetState()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [searchState])
 
   const onSearchChange = field => e => {
     if (searchState.page * 30 < totalResults && field === 'pageUp') {
+      scrollTo('#wrapper')
       dispatch({ type: field, payload: searchState.page + 1 })
-      refSearch.current.scrollIntoView()
       return
     }
 
     if (searchState.page > 1 && field === 'pageDown') {
+      scrollTo('#wrapper')
       dispatch({ type: field, payload: searchState.page - 1 })
-      refSearch.current.scrollIntoView()
       return
     }
-
-    dispatch({ type: field, payload: e.target.value })
   }
 
-  const onSearchIconClick = async () => {
+  const onSearchIconClick = async (input, stars, language) => {
+    dispatch({ type: 'search', payload: input })
+    dispatch({ type: 'sort', payload: stars })
+    dispatch({ type: 'filter', payload: language })
+
     if (
       previousSearchState.term === searchState.term &&
       previousSearchState.sort === searchState.sort &&
@@ -142,8 +146,6 @@ const Index = () => {
     setIsShowModal(!isShowModal)
   }
 
-  if (!repos) return null
-
   const searchCompProps = {
     searchState,
     onSearchIconClick,
@@ -160,58 +162,60 @@ const Index = () => {
         toggleModal={toggleModal}
         searchCompProps={searchCompProps}
       >
-        <SEO/>
-        <span ref={refSearch}/>
-        { isFetchingData
-          ? <Spinner
-              color="rgb(255, 65, 54)"
-              sx={{
-                top: '50%',
-                left: '50%',
-                position: 'absolute',
-                transform: 'translate(-50%, -50%)',
-              }}
+        <SEO />
+        <span id="wrapper" ref={refSearch} />
+        {isFetchingData ? (
+          <Spinner
+            color="rgb(255, 65, 54)"
+            sx={{
+              top: '50%',
+              left: '50%',
+              position: 'absolute',
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
+        ) : repos.items.length > 0 ? (
+          <>
+            <Grid columns={[1, 1, 1, 3]}>
+              {repos.items.map(repo => (
+                <RepoCard key={repo.id} repo={repo} />
+              ))}
+            </Grid>
+            <Pagination
+              pageUp={onSearchChange('pageUp')}
+              pageDown={onSearchChange('pageDown')}
+              currentPage={searchState.page}
+              totalResults={totalResults}
             />
-          : repos.items.length > 0
-              ? <>
-                  <Grid columns={[1, 1, 1, 3]}>
-                    {repos.items.map(repo => (
-                      <RepoCard key={repo.id} repo={repo} />
-                    ))}
-                  </Grid>
-                  <Pagination
-                    pageUp={onSearchChange('pageUp')}
-                    pageDown={onSearchChange('pageDown')}
-                    currentPage={searchState.page}
-                    totalResults={totalResults}
-                  />
-                </>
-              : <Box
-                  sx={{
-                    top: '50%',
-                    left: '50%',
-                    position: 'absolute',
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                >
-                  <Text
-                    sx={{
-                      fontSize: 22,
-                      fontFamily: 'inter',
-                    }}
-                  >
-                    No result found
-                  </Text>
-                </Box>
-        }
+          </>
+        ) : (
+          <Box
+            sx={{
+              top: '50%',
+              left: '50%',
+              position: 'absolute',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <Text
+              sx={{
+                fontSize: 22,
+                fontFamily: 'inter',
+              }}
+            >
+              No result found
+            </Text>
+          </Box>
+        )}
       </Layout>
-      <Flex
-        id="modal"
-        className={isShowModal ? 'active' : null}
-      >
+      <Flex id="modal" className={isShowModal ? 'active' : null}>
         <Flex
           p="16px"
-          bg={colorMode === 'dark' ? 'rgba(64,64,64,0.9)' : 'rgba(255,255,255,0.7)'}
+          bg={
+            colorMode === 'dark'
+              ? 'rgba(64,64,64,0.9)'
+              : 'rgba(255,255,255,0.7)'
+          }
           sx={{
             maxWidth: 660,
             margin: 'auto',
@@ -226,7 +230,7 @@ const Index = () => {
             },
           }}
         >
-          <Search {...searchCompProps}/>
+          <Search {...searchCompProps} />
           <Button
             mt="8px"
             backgroundColor="rgb(186, 65, 54)"

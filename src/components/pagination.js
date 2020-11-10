@@ -2,11 +2,27 @@ import React from 'react'
 import { Flex, Text, Button } from 'theme-ui'
 
 const Pagination = ({ pageUp, pageDown, currentPage, totalResults }) => {
+  const ButtonStyle = {
+    cursor: 'pointer',
+    width: 36,
+    height: 36,
+    padding: 0,
+    borderRadius: 4,
+    border: '1px solid',
+    borderColor: 'cardBorder',
+    backgroundColor: 'cardBackground',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 18,
+    color: 'text',
+  }
+
   return (
     <Flex
       sx={{
         fontSize: [16, 26],
-        color: 'white',
+        color: 'textRreverse',
         textAlign: 'center',
         fontFamily: 'inter',
         padding: '8px',
@@ -15,37 +31,28 @@ const Pagination = ({ pageUp, pageDown, currentPage, totalResults }) => {
         justifyContent: 'center',
       }}
     >
-      <Button
-        disabled={currentPage === 1}
-        sx={{
-          cursor: 'pointer',
-          width: 36,
-          height: 36,
-          padding: 0,
-          borderRadius: '50%',
-          backgroundColor: 'orange',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        onClick={pageDown}>
-        &#8617;
+      {currentPage !== 1 && (
+        <Button
+          sx={{
+            ...ButtonStyle,
+          }}
+          onClick={pageDown}
+        >
+          &#8592;
         </Button>
-      <Text sx={{ color: 'grey', px: '1em', fontSize: [14, 16, 16, 20, 24], }}>page {currentPage} ({totalResults} results)</Text>
+      )}
+      <Text sx={{ color: 'text', px: 32, fontSize: 14 }}>
+        Page {currentPage} ({totalResults} results)
+      </Text>
       <Button
         sx={{
-          cursor: 'pointer',
-          width: 36,
-          height: 36,
-          padding: 0,
-          borderRadius: '50%',
-          backgroundColor: 'orange',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          ...ButtonStyle,
         }}
-        onClick={pageUp}>&#8618;</Button>
-    </Flex >
+        onClick={pageUp}
+      >
+        &#8594;
+      </Button>
+    </Flex>
   )
 }
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Input, Grid, Select, Label } from 'theme-ui'
-import SearchIcon from "../images/icons/search.inline.svg"
+import SearchIcon from '../images/icons/search.inline.svg'
 
 import { githubLanguages } from '../data/githubLanguages'
 
@@ -11,10 +11,12 @@ const Search = ({
   onFilterChange,
   onSearchIconClick,
 }) => {
+  const [valueInput, setValueInput] = useState('')
+  const [valueSelectStars, setValueSelectStars] = useState('')
+  const [valueSelectLanguage, setValueSelectLanguage] = useState('')
+
   return (
-    <Grid
-      columns={[1, 2]}
-    >
+    <Grid columns={[1, 2]}>
       <Box
         sx={{
           width: '100%',
@@ -35,15 +37,23 @@ const Search = ({
             fontSize: 15,
             pr: '40px',
             '&:focus': {
-              outline: 0
+              outline: 0,
             },
             '@media only screen and (max-width: 320px)': {
               fontSize: 13,
             },
           }}
-          value={searchState.term}
-          onChange={onSearchChange}
-          onKeyPress={e => (e.key === 'Enter' ? onSearchIconClick() : {})}
+          value={valueInput}
+          onChange={e => setValueInput(e.target.value)}
+          onKeyPress={e =>
+            e.key === 'Enter'
+              ? onSearchIconClick(
+                  valueInput,
+                  valueSelectStars,
+                  valueSelectLanguage
+                )
+              : {}
+          }
           placeholder="Search Covid-19 related repos"
         />
 
@@ -56,7 +66,9 @@ const Search = ({
             cursor: 'pointer',
             position: 'absolute',
           }}
-          onClick={onSearchIconClick}
+          onClick={() =>
+            onSearchIconClick(valueInput, valueSelectStars, valueSelectLanguage)
+          }
         />
 
         <Label
@@ -65,11 +77,19 @@ const Search = ({
             padding: '0px 3px',
             display: 'block',
             mt: '8px',
-            opacity: '0.6'
+            opacity: '0.6',
           }}
         >
-          Press Enter when you are done (GitHub API has a rate limit of<a style={{ cursor: 'pointer', color: 'rgb(255, 65, 54)' }} href="https://developer.github.com/v3/search/#rate-limit" target="_blank" rel="noopener noreferrer"><b>&nbsp; 10
-          requests per minute </b> &nbsp;</a>if something not working please wait...)
+          Press Enter when you are done (GitHub API has a rate limit of
+          <a
+            style={{ cursor: 'pointer', color: 'rgb(255, 65, 54)' }}
+            href="https://developer.github.com/v3/search/#rate-limit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <b>&nbsp; 10 requests per minute </b> &nbsp;
+          </a>
+          if something not working please wait...)
         </Label>
       </Box>
       <Grid
@@ -98,11 +118,11 @@ const Search = ({
                 fontSize: 13,
               },
               '&:focus': {
-                outline: 0
+                outline: 0,
               },
             }}
-            value={searchState.sort}
-            onChange={e => onSortChange(e)}
+            value={valueSelectStars}
+            onChange={e => setValueSelectStars(e.target.value)}
           >
             <option value="stars">Sort by Stars</option>
             <option value="">Sort by Best Match</option>
@@ -129,14 +149,18 @@ const Search = ({
                 fontSize: 13,
               },
               '&:focus': {
-                outline: 0
+                outline: 0,
               },
             }}
-            value={searchState.filter}
-            onChange={e => onFilterChange(e)}
+            value={valueSelectLanguage}
+            onChange={e => setValueSelectLanguage(e.target.value)}
           >
             <option value="">All Languages</option>
-            {githubLanguages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
+            {githubLanguages.map(lang => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ))}
           </Select>
         </Box>
       </Grid>

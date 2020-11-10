@@ -5,11 +5,11 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        borderWidth: 1,
-        borderStyle: 'solid',
+        borderTop: '1px solid',
         borderColor: 'cardBorder',
-        py: '5px'
-      }}>
+        py: '5px',
+      }}
+    >
       <Flex
         as="footer"
         sx={{
@@ -18,7 +18,7 @@ const Footer = () => {
           justifyContent: 'space-between',
           maxWidth: ['100%', '768px', '992px', '1400px'],
           py: '15px',
-          margin: '0 auto'
+          margin: '0 auto',
         }}
       >
         <Text
@@ -43,10 +43,11 @@ const Footer = () => {
               color: 'text',
               fontFamily: 'inter',
               textAlign: 'center',
+              my: 10,
             }}
           >
             Get involved
-        </Text>
+          </Text>
         </a>
         <Text
           sx={{
@@ -56,9 +57,10 @@ const Footer = () => {
             textAlign: 'center',
           }}
         >
-          <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>&nbsp;|&nbsp;
+          <a href="https://twitter.com/_luisFilipePT">@_luisFilipePT</a>
+          &nbsp;|&nbsp;
           <a href="https://github.com/luisFilipePT/github-covid-finder/blob/master/CODE_OF_CONDUCT.md">
-              Code of Conduct
+            Code of Conduct
           </a>
         </Text>
       </Flex>

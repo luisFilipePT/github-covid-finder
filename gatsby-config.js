@@ -38,7 +38,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
           include: /\.inline\.svg$/,
@@ -49,5 +49,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-smoothscroll`,
+    `gatsby-plugin-transition-link`,
   ],
 }
