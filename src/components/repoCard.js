@@ -33,8 +33,17 @@ const RepoCard = ({ repo }) => {
           height: '80%',
         }}
       >
-        <Text sx={{ fontSize: 20, py: '8px' }}>{repo.name}</Text>
-        <Text sx={{ fontSize: 16, py: '4px', color: '#9d1e1e' }}>
+        <Text sx={{ wordBreak: 'break-all', fontSize: 20, py: '8px' }}>
+          {repo.name}
+        </Text>
+        <Text
+          sx={{
+            wordBreak: 'break-all',
+            fontSize: 16,
+            py: '4px',
+            color: '#9d1e1e',
+          }}
+        >
           {repo.full_name}
         </Text>
         <Text
